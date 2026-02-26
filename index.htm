@@ -28,7 +28,7 @@
             align-items: center;
             justify-content: center;
             color: white;
-            overflow: hidden;
+            overflow-x: hidden;
             padding: 20px;
             user-select: none;
         }
@@ -83,6 +83,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-wrap: wrap; /* Додано для красивого відображення 3-х карток */
+            gap: 30px; /* Відступ між картками */
             width: 100%;
             animation: fadeInUp 1s ease-out 0.5s backwards;
         }
@@ -172,27 +174,36 @@
     </header>
 
     <main class="games-container">
-    <div class="game-card">
-        <a href="https://platon-lab.github.io/Tetris/" target="_blank">
-            <img src="Tetris.png" alt="Tetris Game">
-            <div class="play-overlay">
-                <span class="play-icon">▶</span>
-                <span class="play-text">ГРАТИ</span>
-            </div>
-        </a>
-    </div>
- 
-     <div class="game-card">
-        <a href="https://platon-lab.github.io/Platon-Dash/" target="_blank">
-            <img src="GD.png" alt="Platon Dash Game">
-            <div class="play-overlay">
-                <span class="play-icon">▶</span>
-                <span class="play-text">ГРАТИ</span>
-            </div>
-        </a>
-    </div>
-</main>  
-      
+        <div class="game-card">
+            <a href="https://platon-lab.github.io/Tetris/" target="_blank">
+                <img src="Tetris.png" alt="Tetris Game">
+                <div class="play-overlay">
+                    <span class="play-icon">▶</span>
+                    <span class="play-text">ГРАТИ</span>
+                </div>
+            </a>
+        </div>
+     
+        <div class="game-card">
+            <a href="https://platon-lab.github.io/Platon-Dash/" target="_blank">
+                <img src="GD.png" alt="Platon Dash Game">
+                <div class="play-overlay">
+                    <span class="play-icon">▶</span>
+                    <span class="play-text">ГРАТИ</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="game-card">
+            <a href="https://platon-lab.github.io/Shooter/" target="_blank">
+                <img src="Shoot.png" alt="Shooter Game">
+                <div class="play-overlay">
+                    <span class="play-icon">▶</span>
+                    <span class="play-text">ГРАТИ</span>
+                </div>
+            </a>
+        </div>
+    </main>  
 
 </body>
 </html>
