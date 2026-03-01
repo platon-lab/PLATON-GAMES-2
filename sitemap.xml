@@ -17,4 +17,16 @@
     <loc>https://platon-lab.github.io/Shooter/</loc>
     <priority>0.8</priority>
   </url>
+  <url>
+  <loc>https://platon-lab.github.io/Subway-Surfers/</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+  <loc>https://platon-lab.github.io/Pac-Man/</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+  <loc>https://platon-lab.github.io/Angry-Birds/</loc>
+    <priority>0.8</priority>
+  </url>
 </urlset>
