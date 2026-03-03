@@ -145,7 +145,33 @@
             text-transform: uppercase;
         }
 
-        /* Анімації появи */
+        /* Анімація розльоту */
+        .fly-away {
+            pointer-events: none;
+            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.5s !important;
+            opacity: 0 !important;
+        }
+
+        /* Оверлей для секретки */
+        #secret-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 9999;
+            display: none;
+            background: black;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #secret-overlay img, #secret-overlay video {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
         @keyframes fadeInDown {
             from { opacity: 0; transform: translateY(-30px); }
             to { opacity: 1; transform: translateY(0); }
@@ -173,7 +199,7 @@
         <h1>PLATON GAMES 2</h1>
     </header>
 
-    <main class="games-container">
+    <main class="games-container" id="main-container">
         
         <div class="game-card">
             <a href="https://platon-lab.github.io/Tetris/" target="_blank">
@@ -295,7 +321,66 @@
             </a>
         </div> 
 
-        </main>  
+    </main>  
+
+    <div id="secret-overlay">
+        <img id="bam-gif" src="BAM.gif" style="display: none;">
+        <video id="end-video" src="End.mp4" preload="auto"></video>
+    </div>
+    <audio id="bam-sound" src="BAM.mp3"></audio>
+
+    <script>
+        let clickCount = 0;
+        const body = document.body;
+        const overlay = document.getElementById('secret-overlay');
+        const bamGif = document.getElementById('bam-gif');
+        const endVideo = document.getElementById('end-video');
+        const bamSound = document.getElementById('bam-sound');
+        const cards = document.querySelectorAll('.game-card');
+
+        body.addEventListener('click', (e) => {
+            // Перевірка: клік НЕ по картці гри
+            if (e.target.closest('.game-card')) return;
+
+            clickCount++;
+
+            if (clickCount === 20) {
+                activateEasterEgg();
+            }
+        });
+
+        function activateEasterEgg() {
+            // 1. Показуємо GIF та звук
+            overlay.style.display = 'flex';
+            bamGif.style.display = 'block';
+            bamSound.play();
+
+            // 2. Через 0.1 сек розлітаються картки і вмикається відео
+            setTimeout(() => {
+                // Зупиняємо звук BAM
+                bamSound.pause();
+                bamSound.currentTime = 0;
+
+                // Картки розлітаються
+                cards.forEach(card => {
+                    const randomX = (Math.random() - 0.5) * 2000;
+                    const randomY = (Math.random() - 0.5) * 2000;
+                    const randomRotate = (Math.random() - 0.5) * 1000;
+                    card.classList.add('fly-away');
+                    card.style.transform = `translate(${randomX}px, ${randomY}px) rotate(${randomRotate}deg)`;
+                });
+
+                // Приховуємо GIF, запускаємо відео
+                bamGif.style.display = 'none';
+                endVideo.play();
+            }, 100);
+        }
+
+        // 3. Після кінця відео — редирект
+        endVideo.onended = () => {
+            window.location.href = "https://platon-lab.github.io/PLATON-GAMES-3/";
+        };
+    </script>
 
 </body>
 </html>
