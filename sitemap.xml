@@ -41,4 +41,9 @@
   <loc>https://platon-lab.github.io/Stack/</loc>
     <priority>0.8</priority>
   </url>
+  <url>
+  <loc>https://platon-lab.github.io/PLATON-GAMES-3/</loc>
+    <priority>0.8</priority>
+  </url>
+
 </urlset>
